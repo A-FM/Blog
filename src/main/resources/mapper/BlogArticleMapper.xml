@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.ycy.blog.mapper.BlogArticleMapper">
+  <resultMap id="BaseResultMap" type="pers.ycy.blog.domain.BlogArticle">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="comment_number" jdbcType="INTEGER" property="commentNumber" />
+    <result column="blog_title" jdbcType="VARCHAR" property="blogTitle" />
+    <result column="article_create_time" jdbcType="TIMESTAMP" property="articleCreateTime" />
+    <result column="article_update_time" jdbcType="TIMESTAMP" property="articleUpdateTime" />
+    <result column="page_view" jdbcType="INTEGER" property="pageView" />
+    <result column="blog_content" jdbcType="LONGVARCHAR" property="blogContent" />
+  </resultMap>
+
+</mapper>

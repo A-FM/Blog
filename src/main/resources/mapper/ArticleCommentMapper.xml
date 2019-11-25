@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.ycy.blog.mapper.ArticleCommentMapper">
+  <resultMap id="BaseResultMap" type="pers.ycy.blog.domain.ArticleComment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="comment_user_name" jdbcType="VARCHAR" property="commentUserName" />
+    <result column="comment_user_email" jdbcType="VARCHAR" property="commentUserEmail" />
+    <result column="article_create_time" jdbcType="TIMESTAMP" property="articleCreateTime" />
+    <result column="article_update_time" jdbcType="TIMESTAMP" property="articleUpdateTime" />
+    <result column="article_comment" jdbcType="LONGVARCHAR" property="articleComment" />
+  </resultMap>
+</mapper>

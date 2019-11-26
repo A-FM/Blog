@@ -20,6 +20,4 @@ import java.util.List;
 public interface BlogArticleMapper extends MyMapper<BlogArticle> {
     @Select("SELECT blog_article.* FROM blog_category INNER JOIN category_to_article ON category_to_article.category_id=blog_category.id INNER JOIN blog_article ON blog_article.id=category_to_article.article_id WHERE blog_category.id=#{id}")
     List<BlogArticle> pageAndCategory(int id);
-    @Select("SELECT count(*) FROM blog_article")
-    int articleNumber();
 }

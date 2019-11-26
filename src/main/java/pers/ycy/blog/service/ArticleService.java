@@ -8,5 +8,4 @@ public interface ArticleService {
     PageInfo<BlogArticle> page(int pageNum, int pageSize, String objectJson);
     BlogArticle getArticleById(int id);
     PageInfo<BlogArticle> pageAndCategory(int pageNum, int pageSize, int categoryId);
-    int articleNumber();
 }

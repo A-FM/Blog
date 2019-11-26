@@ -51,9 +51,4 @@ public class ArticleController {
     public PageInfo<BlogArticle> page(@PathVariable(required = true, value = "pageNum") int pageNum, @PathVariable(required = true, value = "pageSize") int pageSize, @PathVariable(required = true, value = "categoryId") int categoryId) {
         return articleService.pageAndCategory(pageNum,pageSize,categoryId);
     }
-    @ApiOperation(value = "文章总数查询")
-    @RequestMapping(value = "count", method = RequestMethod.GET)
-    public int articleCount() {
-        return blogArticleMapper.articleNumber();
-    }
 }

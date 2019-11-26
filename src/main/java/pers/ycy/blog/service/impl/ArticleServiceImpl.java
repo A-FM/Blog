@@ -63,8 +63,4 @@ public class ArticleServiceImpl implements ArticleService {
         return new PageInfo<>(blogArticleMapper.pageAndCategory(categoryId));
     }
 
-    @Override
-    public int articleNumber() {
-        return blogArticleMapper.articleNumber();
-    }
 }

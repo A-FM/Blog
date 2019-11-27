@@ -5,10 +5,13 @@ import com.github.pagehelper.page.PageMethod;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pers.ycy.blog.domain.ArticlePerMouth;
 import pers.ycy.blog.domain.BlogArticle;
 import pers.ycy.blog.mapper.BlogArticleMapper;
 import pers.ycy.blog.service.ArticleService;
 import pers.ycy.blog.utils.MapperUtils;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -25,28 +28,12 @@ public class ArticleServiceImpl implements ArticleService {
      *
      * @param pageNum 页码
      * @param pageSize 每页数量
-     * @param objectJson 对象json数据
-     * @return 分页内容
+     * @return 分页内容 并且按照更新时间更前的.
      */
     @Override
-    public PageInfo<BlogArticle> page(int pageNum, int pageSize, String objectJson) {
-        BlogArticle blogArticle = null;
-
-        if(StringUtils.isNotBlank(objectJson)){
-            try {
-                blogArticle = MapperUtils.json2pojo(objectJson,BlogArticle.class);
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("---------- Json2Pojo出错");
-            }
-        }
-
-        PageMethod.startPage(pageNum,pageSize);
-        if(blogArticle==null){
-            return new PageInfo<>(blogArticleMapper.selectAll());
-        }else{
-            return new PageInfo<>(blogArticleMapper.select(blogArticle));
-        }
+    public PageInfo<BlogArticle> page(int pageNum, int pageSize) {
+        PageMethod.startPage(pageNum,pageSize,"article_create_time DESC");
+        return new PageInfo<>(blogArticleMapper.selectAll());
     }
 
     @Override
@@ -61,6 +48,16 @@ public class ArticleServiceImpl implements ArticleService {
 
         PageMethod.startPage(pageNum,pageSize);
         return new PageInfo<>(blogArticleMapper.pageAndCategory(categoryId));
+    }
+
+    /**
+     * 按照月份对文章数量进行分类
+     * @return
+     */
+    @Override
+    public List<ArticlePerMouth> articlePerMouth() {
+        List<ArticlePerMouth> articlePerMouths = blogArticleMapper.articlePerMouth();
+        return articlePerMouths;
     }
 
 }

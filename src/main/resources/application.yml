@@ -31,3 +31,5 @@ logging:
   level:
     pers.ycy.blog.mapper: debug
   file: log/log.log
+server:
+  port: 7777

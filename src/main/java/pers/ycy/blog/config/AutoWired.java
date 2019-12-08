@@ -1,11 +1,13 @@
 package pers.ycy.blog.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import pers.ycy.blog.utils.BeanValidator;
 import pers.ycy.blog.utils.RedisUtils;
+import sun.plugin2.main.client.PrintBandDescriptor;
 
 import javax.validation.Validator;
 
@@ -19,27 +21,20 @@ import javax.validation.Validator;
 @Configuration
 public class AutoWired {
 
+    private final Validator Validator;
     private final RedisTemplate redisTemplate;
-    public AutoWired(RedisTemplate redisTemplate) {
+    public AutoWired(RedisTemplate redisTemplate, Validator Validator) {
         this.redisTemplate = redisTemplate;
+        this.Validator = Validator;
     }
 
-    /**
-     * 下面的两个方法都是为了实现JSR-303
-     * @return
-     */
-    private Validator getValidator(){
-        return new LocalValidatorFactoryBean();
-    }
+
     @Bean(name="beanValidator")
     public BeanValidator getBeanValidator(){
-        return new BeanValidator(getValidator());
+        return new BeanValidator(Validator);
     }
 
 
-    private RedisTemplate<String,Object> getRedisTemplate(){
-        return new RedisTemplate<>();
-    }
     @Bean(name="redisUtils")
     public RedisUtils getRedisUtils(){
         return new RedisUtils(redisTemplate);

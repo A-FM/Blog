@@ -99,7 +99,7 @@ public class RedisUtils {
      * @return 是否成功
      */
     public static Boolean delete(String key){
-        return true;
+        return RedisUtils.redisTemplate.delete(key);
     }
 
     /**

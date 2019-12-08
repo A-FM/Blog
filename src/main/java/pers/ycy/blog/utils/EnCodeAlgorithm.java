@@ -1,5 +1,7 @@
 package pers.ycy.blog.utils;
 
+import org.junit.Test;
+
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -27,11 +29,6 @@ public class EnCodeAlgorithm {
 		byte[] mdByte = md.digest(passWord.getBytes(StandardCharsets.UTF_8));
 		byte[] resultDigest = Base64.getEncoder().encode(mdByte);
 		return new String(resultDigest);
-	}
-
-	public static void main(String[] args) {
-		String s = enCodePassWord("q.123456");
-		System.out.println(s);
 	}
 
 }

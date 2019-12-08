@@ -61,27 +61,12 @@ public class BeanValidator {
      * @param groups 验证组
      * @return 验证成功：返回 null；验证失败：返回错误信息
      */
-    public static String validator(Object object, Class<?>... groups) {
+    public static List<String> validator(Object object, Class<?>... groups) {
         try {
             validateWithException(validator, object, groups);
         } catch (ConstraintViolationException ex) {
-            List<String> list = extractMessage(ex);
-            list.add(0, "数据验证失败：");
-
-            // 封装错误消息为字符串
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < list.size(); i++) {
-                String exMsg = list.get(i);
-                if (i != 0 ){
-                    sb.append(String.format("%s. %s", i, exMsg)).append(list.size() > 1 ? "<br/>" : "");
-                } else {
-                    sb.append(exMsg).append(list.size() > 1 ? "<br/>" : "");
-                }
-            }
-
-            return sb.toString();
+            return extractMessage(ex);
         }
-
         return null;
     }
 }

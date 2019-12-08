@@ -1,9 +1,10 @@
 package pers.ycy.blog.utils;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
 
+import javax.naming.Name;
 import java.io.Serializable;
 
 /**
@@ -16,11 +17,15 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(value = "BaseResult",description = "为了方便前端操作和规范制定的统一返回类型类")
 public class BaseResult implements Serializable {
 
     private static final long serialVersionUID = -1246447848398026996L;
+    @ApiModelProperty(value = "代表操作状态的返回码")
     private Integer statusCode;
+    @ApiModelProperty(value = "备注信息")
     private String message;
+    @ApiModelProperty(value = "返回的内容在该属性类中",allowEmptyValue = true)
     private Object object;
 
     /**
@@ -40,9 +45,17 @@ public class BaseResult implements Serializable {
      */
     public static final int STATUS_FORBIDDEN = 403;
     /**
+     * 没找到你想要的东西
+     */
+    public static final int STATUS_NOTFOUND = 404;
+    /**
      * 不是我想要的文件类型.
      */
     public static final int STATUS_UNSUPPORTED = 415;
+    /**
+     * 不是我想要的文件类型.
+     */
+    public static final int STATUS_ERROR_PARAM = 499;
 
 
 

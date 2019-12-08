@@ -6,11 +6,11 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="comment_number" jdbcType="INTEGER" property="commentNumber" />
     <result column="blog_title" jdbcType="VARCHAR" property="blogTitle" />
-    <result column="article_create_time" jdbcType="TIMESTAMP" property="articleCreateTime" />
-    <result column="article_update_time" jdbcType="TIMESTAMP" property="articleUpdateTime" />
+    <result column="comment_number" jdbcType="INTEGER" property="commentNumber" />
     <result column="page_view" jdbcType="INTEGER" property="pageView" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="blog_content" jdbcType="LONGVARCHAR" property="blogContent" />
   </resultMap>
 

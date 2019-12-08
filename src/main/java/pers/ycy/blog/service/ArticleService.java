@@ -1,7 +1,7 @@
 package pers.ycy.blog.service;
 
 import com.github.pagehelper.PageInfo;
-import pers.ycy.blog.domain.ArticlePerMouth;
+import pers.ycy.blog.domain.vo.ArticlePerMouth;
 import pers.ycy.blog.domain.BlogArticle;
 
 import java.util.List;

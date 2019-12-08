@@ -7,10 +7,11 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
     <result column="comment_user_name" jdbcType="VARCHAR" property="commentUserName" />
     <result column="comment_user_email" jdbcType="VARCHAR" property="commentUserEmail" />
-    <result column="article_create_time" jdbcType="TIMESTAMP" property="articleCreateTime" />
-    <result column="article_update_time" jdbcType="TIMESTAMP" property="articleUpdateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="article_comment" jdbcType="LONGVARCHAR" property="articleComment" />
   </resultMap>
 </mapper>

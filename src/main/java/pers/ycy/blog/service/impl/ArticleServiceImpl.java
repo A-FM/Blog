@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.page.PageMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pers.ycy.blog.domain.ArticlePerMouth;
+import pers.ycy.blog.domain.vo.ArticlePerMouth;
 import pers.ycy.blog.domain.BlogArticle;
 import pers.ycy.blog.mapper.BlogArticleMapper;
 import pers.ycy.blog.service.ArticleService;
@@ -30,7 +30,7 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public PageInfo<BlogArticle> page(int pageNum, int pageSize) {
-        PageMethod.startPage(pageNum,pageSize,"article_create_time DESC");
+        PageMethod.startPage(pageNum,pageSize,"create_time DESC");
         return new PageInfo<>(blogArticleMapper.selectAll());
     }
 

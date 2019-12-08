@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pers.ycy.blog.domain.ArticlePerMouth;
+import pers.ycy.blog.domain.vo.ArticlePerMouth;
 import pers.ycy.blog.domain.BlogArticle;
 import pers.ycy.blog.service.ArticleService;
 

@@ -1,8 +1,6 @@
 package pers.ycy.blog.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -14,11 +12,18 @@ import java.util.concurrent.TimeUnit;
  * @modifyBy: 袁重阳
  * @modifyAt: 2019-12-06 15:31
  */
-@Component
 public class RedisUtils {
 
-    @Autowired
     private static RedisTemplate<String,Object> redisTemplate;
+
+    public RedisUtils() {
+    }
+
+    public RedisUtils(RedisTemplate<String,Object> redisTemplate) {
+        RedisUtils.redisTemplate=redisTemplate;
+    }
+
+
 
     /**
      * 带有过期时间的键值对设置
@@ -26,9 +31,8 @@ public class RedisUtils {
      * @param value 值
      * @param second 过期时间(/SECONDS)
      */
-    public void put(String key, Object value, long second) {
-
-        redisTemplate.opsForValue().set(key,value,second, TimeUnit.SECONDS);
+    public static void put(String key, Object value, long second) {
+        RedisUtils.redisTemplate.opsForValue().set(key,value,second, TimeUnit.SECONDS);
     }
 
     /**
@@ -36,9 +40,9 @@ public class RedisUtils {
      * @param key 键
      * @return Object对象
      */
-    public Object get(String key) {
+    public static Object get(String key) {
 
-        return redisTemplate.opsForValue().get(key);
+        return RedisUtils.redisTemplate.opsForValue().get(key);
     }
 
     /**
@@ -46,8 +50,8 @@ public class RedisUtils {
      * @param key 键
      * @return 过期时间(/SECONDS)
      */
-    public Long getExpire(String key){
-        return redisTemplate.getExpire(key);
+    public static Long getExpire(String key){
+        return RedisUtils.redisTemplate.getExpire(key);
     }
 
     /**
@@ -55,8 +59,8 @@ public class RedisUtils {
      * @param key 键
      * @return 是否存在
      */
-    public Boolean hasKey(String key){
-        return redisTemplate.hasKey(key);
+    public static Boolean hasKey(String key){
+        return RedisUtils.redisTemplate.hasKey(key);
     }
 
     /**
@@ -66,8 +70,8 @@ public class RedisUtils {
      * @param unit 单位
      * @return 是否成功
      */
-    public Boolean expire(String key,Long timeout,TimeUnit unit){
-        return redisTemplate.expire(key,timeout,unit);
+    public static Boolean expire(String key,Long timeout,TimeUnit unit){
+        return RedisUtils.redisTemplate.expire(key,timeout,unit);
     }
 
     /**
@@ -76,8 +80,8 @@ public class RedisUtils {
      * @param date Date 类
      * @return 是否成功
      */
-    public Boolean expireAt(String key, Date date){
-        return redisTemplate.expireAt(key,date);
+    public static Boolean expireAt(String key, Date date){
+        return RedisUtils.redisTemplate.expireAt(key,date);
     }
 
     /**
@@ -85,8 +89,8 @@ public class RedisUtils {
      * @param key 键
      * @return 是否成功
      */
-    public Boolean persist(String key){
-        return redisTemplate.persist(key);
+    public static Boolean persist(String key){
+        return RedisUtils.redisTemplate.persist(key);
     }
 
     /**
@@ -94,7 +98,7 @@ public class RedisUtils {
      * @param key 键
      * @return 是否成功
      */
-    public Boolean delete(String key){
+    public static Boolean delete(String key){
         return true;
     }
 
@@ -104,7 +108,7 @@ public class RedisUtils {
      * @param newKey 新键
      * @return 是否成功
      */
-    public Boolean renameIfAbsent(String oldKey,String newKey){
-        return redisTemplate.renameIfAbsent(oldKey,newKey);
+    public static Boolean renameIfAbsent(String oldKey,String newKey){
+        return RedisUtils.redisTemplate.renameIfAbsent(oldKey,newKey);
     }
 }

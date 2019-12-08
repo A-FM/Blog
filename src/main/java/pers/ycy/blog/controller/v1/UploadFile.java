@@ -2,6 +2,7 @@ package pers.ycy.blog.controller.v1;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import io.swagger.annotations.Api;
 import org.junit.Test;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import java.util.Properties;
  * @modifyBy: 袁重阳
  * @modifyAt: 2019-11-29 17:16
  */
+@Api(tags = "文件上传")
 @RestController
 @RequestMapping(value = "file")
 public class UploadFile {

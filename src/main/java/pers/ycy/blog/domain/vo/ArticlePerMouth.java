@@ -1,4 +1,4 @@
-package pers.ycy.blog.domain;
+package pers.ycy.blog.domain.vo;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
@@ -18,6 +18,7 @@ import java.io.Serializable;
 @Data
 public class ArticlePerMouth implements Serializable {
     private static final long serialVersionUID = -4977905863611536730L;
+
     @ApiModelProperty(value = "年-月")
     private String yearAndMouth;
     @ApiModelProperty(value = "文章数量")

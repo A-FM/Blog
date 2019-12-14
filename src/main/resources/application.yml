@@ -32,4 +32,4 @@ logging:
     pers.ycy.blog.mapper: debug
   file: log/log.log
 server:
-  port: 7778
+  port: 7779

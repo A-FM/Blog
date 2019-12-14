@@ -11,11 +11,11 @@ import pers.ycy.blog.utils.BaseResult;
 
 /**
  * @author: 袁重阳
- * @description:
- * @create: 2019-12-08 20:54
- * @modifyBy: 袁重阳
- * @modifyAt: 2019-12-08 20:54
- */
+        * @description:
+        * @create: 2019-12-08 20:54
+        * @modifyBy: 袁重阳
+        * @modifyAt: 2019-12-08 20:54
+        */
 public class BaseController<T extends BaseEntity,S extends BaseService<T>> {
     /**
      * 为了子类能接收到所以声明为 Protect

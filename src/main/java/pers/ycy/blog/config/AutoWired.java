@@ -1,13 +1,8 @@
 package pers.ycy.blog.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import pers.ycy.blog.utils.BeanValidator;
-import pers.ycy.blog.utils.RedisUtils;
-import sun.plugin2.main.client.PrintBandDescriptor;
 
 import javax.validation.Validator;
 
@@ -21,22 +16,14 @@ import javax.validation.Validator;
 @Configuration
 public class AutoWired {
 
-    private final Validator Validator;
-    private final RedisTemplate redisTemplate;
-    public AutoWired(RedisTemplate redisTemplate, Validator Validator) {
-        this.redisTemplate = redisTemplate;
-        this.Validator = Validator;
+    private final Validator validator;
+    public AutoWired(Validator validator) {
+        this.validator = validator;
     }
-
 
     @Bean(name="beanValidator")
     public BeanValidator getBeanValidator(){
-        return new BeanValidator(Validator);
+        return new BeanValidator(validator);
     }
 
-
-    @Bean(name="redisUtils")
-    public RedisUtils getRedisUtils(){
-        return new RedisUtils(redisTemplate);
-    }
 }
